@@ -6,7 +6,7 @@ import {
 } from '@aztec/bb.js/dest/node/index.js';
 import { executeCircuit, compressWitness } from '@noir-lang/acvm_js';
 import { ethers } from 'ethers'; // I'm lazy so I'm using ethers to pad my input
-import circuit from "../target/main.json";
+import circuit from "../target/main.json" assert { type: 'json' };
 
 async function main() {
   const acirBuffer = Buffer.from(circuit.bytecode, 'base64');
