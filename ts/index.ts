@@ -1,4 +1,4 @@
-import { gunzipSync } from 'zlib';
+import { decompressSync } from 'fflate';
 import {
   Crs,
   newBarretenbergApiAsync,
@@ -10,11 +10,11 @@ import circuit from "../target/main.json";
 
 async function main() {
   const acirBuffer = Buffer.from(circuit.bytecode, 'base64');
-  const acirBufferUncompressed = gunzipSync(acirBuffer);
+  const acirBufferUncompressed = decompressSync(acirBuffer);
 
   const api = await newBarretenbergApiAsync(4);
 
-  const [exact, total, subgroup] = await api.acirGetCircuitSizes(JSON.parse(circuit.bytecode));
+  const [exact, total, subgroup] = await api.acirGetCircuitSizes(acirBufferUncompressed);
   const subgroupSize = Math.pow(2, Math.ceil(Math.log2(total)));
   const crs = await Crs.new(subgroupSize + 1);
   await api.commonInitSlabAllocator(subgroupSize);
@@ -44,7 +44,7 @@ async function main() {
     const proof = await api.acirCreateProof(
       acirComposer,
       acirBufferUncompressed,
-      gunzipSync(witness),
+      decompressSync(witness),
       false,
     );
     return proof;
@@ -56,10 +56,6 @@ async function main() {
     const verified = await api.acirVerifyProof(acirComposer, proof, false);
     return verified;
   }
-
-
-
-  
 
   const input = { x: 3, y: 4, z: 12 };
   const witness = await generateWitness(input, acirBuffer);
