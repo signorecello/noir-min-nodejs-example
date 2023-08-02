@@ -1,5 +1,10 @@
 # Minimal Noir project for a nodejs environment
 
+## Prerequisites
+
+- [nargo version 0.9.0](https://noir-lang.org/getting_started/nargo_installation#option-1-noirup)
+- node
+
 ## How to run this
 
 1. `npm i` to install dependencies
