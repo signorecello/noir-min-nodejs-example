@@ -2,8 +2,25 @@
 
 ## Prerequisites
 
-- [nargo version 0.9.0](https://noir-lang.org/getting_started/nargo_installation#option-1-noirup)
-- node
+1. [Install Node.js ≥v18](https://nodejs.org/en) (tested on v18.17.0)
+
+2. [Install noirup](https://noir-lang.org/getting_started/nargo_installation/#option-1-noirup)
+
+3. Install nightly Nargo with
+
+   ```bash
+   noirup -n
+   ```
+
+   > If you're later faced with Noir <> ACVM <> bb.js incomaptibility issues, install Nargo from the tested commit instead:
+   >
+   > 1. [Install Nix](https://noir-lang.org/getting_started/nargo_installation#installing-nix)
+   >
+   > 2. Install Nargo with
+   >
+   > ```bash
+   > nix profile install github:noir-lang/noir/7d0178987641f5cb8f8e95507c54c3cc367bf7d2
+   > ```
 
 ## How to run this
 
