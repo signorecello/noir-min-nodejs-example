@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aztec/bb.js": "^0.3.4",
-    "@noir-lang/acvm_js": "github:noir-lang/acvm-simulator-wasm#c56eec56f67f90fef90126c5575b85190bdcd1e1",
+    "@aztec/bb.js": "0.3.6",
+    "@noir-lang/acvm_js": "git+ssh://git@github.com/noir-lang/acvm-simulator-wasm.git#b9d9ca9dfc5140839f23998d9466307215607c42",
     "ethers": "^5.7.2",
     "fflate": "^0.8.0"
   },

@@ -1,6 +1,7 @@
 [package]
 name = "snippets"
+type = "bin"
 authors = [""]
-compiler_version = "0.9.0"
+compiler_version = "0.10.1"
 
 [dependencies]

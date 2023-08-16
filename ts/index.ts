@@ -6,7 +6,7 @@ import {
 } from '@aztec/bb.js/dest/node/index.js';
 import { executeCircuit, compressWitness } from '@noir-lang/acvm_js';
 import { ethers } from 'ethers'; // I'm lazy so I'm using ethers to pad my input
-import circuit from "../target/main.json" assert { type: 'json' };
+import circuit from "../target/snippets.json" assert { type: 'json' };
 
 async function main() {
   const acirBuffer = Buffer.from(circuit.bytecode, 'base64');
@@ -30,7 +30,6 @@ async function main() {
     const initialWitness = new Map<number, string>();
     initialWitness.set(1, ethers.utils.hexZeroPad(`0x${input.x.toString(16)}`, 32));
     initialWitness.set(2, ethers.utils.hexZeroPad(`0x${input.y.toString(16)}`, 32));
-    initialWitness.set(3, ethers.utils.hexZeroPad(`0x${input.z.toString(16)}`, 32));
 
     const witnessMap = await executeCircuit(acirBuffer, initialWitness, () => {
       throw Error('unexpected oracle');
